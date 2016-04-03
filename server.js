@@ -95,7 +95,6 @@ app.post('/api/photo', function(req, res) {
                             var fullUrl = "/get/image/";
                             images[i] = fullUrl + fileDir + "/" + image;
                         }
-
                         res.json({ images: images, time: time });
                     } else {
                         res.json(error);
@@ -119,8 +118,6 @@ app.get('/get/image/:folder/:image', function(req, res) {
     var params = req.params;
     var folder = settings.exportPath + "/" +params.folder + "/";
     var image = params.image;
-    
-   
     res.sendFile(folder + image);
 });
 
