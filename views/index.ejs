@@ -1,0 +1,10 @@
+<h1 id="bannerText">Convert PDF's to Online Presentations</h1>
+<p>Upload PDF and convert it to online presentation</p>
+<form class="form-inline" id="uploadForm" enctype="multipart/form-data" action="/api/photo" method="post">
+    <input type="hidden" value="png" name="type" />
+    <div class="form-group">
+        <label class="sr-only" for="exampleInputEmail3">PDF</label>
+        <input type="file" class="form-control" name="pdf" placeholder="Enter email">
+    </div>
+    <button type="submit" class="btn btn-primary">Convert</button>
+</form>
