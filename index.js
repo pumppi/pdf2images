@@ -1,7 +1,6 @@
-const PdfConverter = require('./lib/pdfConverter.js');
+const PdfConverter = require('./lib/PdfConverter.js');
 var argv = require('optimist').argv;
 var options = {
-    cacheDir: __dirname+'/cache',
     toDir: __dirname+'/to',
     scriptType: 'png'
 };
@@ -14,22 +13,18 @@ if (typeof argv.to !== 'undefined') {
     options.toDir = argv.to;
 }
 
-if (typeof argv.cache !== 'undefined') {
-    options.cacheDir = argv.cache;
-}
-
 if (typeof argv.file !== 'undefined') {
     file = argv.file;
 }
 
-console.log(options);
 
 var pdf = PdfConverter(options);
 pdf.setInitCallback(function(result) {
     if (file !== false) {
+        console.log('Start rendering!');
         pdf.render(file, 'test-images', function(error, stdOut, stdError) {
             var images = pdf.getRenderedImages();
-            console.log(images);
+            console.log('Render is ready!');
         });
     }
 
