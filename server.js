@@ -4,15 +4,32 @@ const express = require("express");
 const multer = require('multer');
 const bodyParser = require('body-parser');
 const PdfConverter = require('./lib/pdfConverter.js');
-
+var argv = require('optimist').argv;
 var settings = {
     type: 'png',
     port: 3000,
     host: 'localhost',
-    cacheDir: __dirname + '/cache',
     exportPath: __dirname + '/export',
     uploadPath: __dirname + '/uploads'
 };
+if (typeof argv.render !== 'undefined') {
+    settings.type = argv.render;
+}
+
+if (typeof argv.to !== 'undefined') {
+    settings.exportPath = __dirname+argv.to;
+}
+
+if (typeof argv.upload !== 'undefined') {
+    settings.uploadPath = __dirname+argv.upload;
+}
+
+
+if (typeof argv.port !== 'undefined') {
+    settings.port = argv.port;
+}
+
+
 
 
 var app = express();
@@ -117,6 +134,7 @@ app.post('/api/photo', function(req, res) {
 app.get('/get/image/:folder/:image', function(req, res) {
     var params = req.params;
     var folder = settings.exportPath + "/" +params.folder + "/";
+    console.log(folder);
     var image = params.image;
     res.sendFile(folder + image);
 });
@@ -124,4 +142,5 @@ app.get('/get/image/:folder/:image', function(req, res) {
 
 app.listen(settings.port, function() {
     console.log("Starting ExpressJS on port:"+settings.port);
+    console.log('got to: http://localhost:'+settings.port+'/ to upload image');
 });

@@ -16,4 +16,21 @@ Useage:
 
 ### REST API 
 There is REST server for converting images.
+Usage:
+node server.js --render=png --to=/to --upload=/uploads --port=8080
+* --render svg or png
+* --to path to render images (Relative path)
+* --upload upload path for pdfs (Relative path)
+* --port Port for server
+
+**API**
+
+###Test online
+At the moment there is online test tool in this address:
+* http://13.90.210.94/
+* Online presentations from pdfs
+
+###License
+MIT
+
 
