@@ -47,11 +47,13 @@ var upload = multer({
     }
 }).single('pdf');
 
+/* Upload form */
 app.get('/', function(req, res) {
     res.render("index", {});
 });
 
 
+/* Upload api */
 app.post('/api/photo', function(req, res) {
     var start = new Date();
 
@@ -112,7 +114,7 @@ app.post('/api/photo', function(req, res) {
 });
 
 
-
+/* Image loading API */
 app.get('/get/image/:folder/:image', function(req, res) {
     var params = req.params;
     var folder = settings.exportPath + "/" +params.folder + "/";
@@ -124,5 +126,5 @@ app.get('/get/image/:folder/:image', function(req, res) {
 
 
 app.listen(settings.port, function() {
-    console.log("Working on port 3000");
+    console.log("Starting ExpressJS on port:"+settings.port);
 });

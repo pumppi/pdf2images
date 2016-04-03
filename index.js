@@ -26,12 +26,10 @@ console.log(options);
 
 var pdf = PdfConverter(options);
 pdf.setInitCallback(function(result) {
-    console.log('init is done');
-    console.log(result);
     if (file !== false) {
-        console.log(file);
         pdf.render(file, 'test-images', function(error, stdOut, stdError) {
-            console.log(stdError);
+            var images = pdf.getRenderedImages();
+            console.log(images);
         });
     }
 
