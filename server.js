@@ -3,7 +3,7 @@ const url = require('url');
 const express = require("express");
 const multer = require('multer');
 const bodyParser = require('body-parser');
-const PdfConverter = require('./lib/pdfConverter.js');
+const PdfConverter = require('./lib/PdfConverter.js');
 var argv = require('optimist').argv;
 var settings = {
     type: 'png',
