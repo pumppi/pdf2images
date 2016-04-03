@@ -8,7 +8,12 @@ PDFs.
 
 ### Command line tool
 Useage:
-```node index.js --file=PATH_TO_PDF --to=./to/ --render=svg```
+```
+mkdir to
+npm install
+node index.js --file=PATH_TO_PDF --to=./to/ --render=svg
+
+```
 * --file Absolute path to pdf
 * --to where images are rendered
 * --render svg or png
@@ -17,7 +22,13 @@ Useage:
 ### REST API 
 There is REST server for converting images.
 Usage:
-```node server.js --render=png --to=/to --upload=/uploads --port=8080```
+```
+mkdir uploads
+mkdir to
+npm install
+node server.js --render=png --to=/to --upload=/uploads --port=8080
+
+```
 * --render svg or png
 * --to path to render images (Relative path)
 * --upload upload path for pdfs (Relative path)
